@@ -1,0 +1,254 @@
+/* style.css */
+
+/* 1. CONFIGURACIÓN GLOBAL */
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 10px;
+}
+
+/* 2. LAYOUT PRINCIPAL (ELÁSTICO) */
+/* En style.css */
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    
+    /* Este es el ÚNICO espacio que debe haber entre las cajas (20px) */
+    gap: 10px;              
+    
+    width: 100%;
+    max-width: 1500px;      
+    margin: 0 auto;
+    
+    /* Esto junta las cajas al centro si sobra espacio */
+    justify-content: center; 
+}
+
+/* 3. LAS CAJAS DE ARRIBA (1 y 2) */
+.form, 
+.signature {
+    /* 📍 CAMBIO CLAVE 2: Flexibilidad agresiva */
+    /* Grow: 1 (Crece todo lo que pueda)
+       Shrink: 1 (Se encoge si falta espacio)
+       Basis: 450px (Intenta medir al menos 450px de ancho) */
+    flex: 1 1 0;         
+    
+    /* Esto asegura que si haces mucho zoom, bajen una debajo de otra */
+    min-width: 720px;        
+
+
+}
+
+/* 4. LA CAJA DE ABAJO (3) */
+.install {
+    /* 📍 CAMBIO CLAVE 3: Siempre llena la fila */
+    flex: 1 1 100%;          
+    width: 100%;
+    margin-top: 10
+    px;
+}
+
+/* 5. ESTILO DE LAS TARJETAS */
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 32px rgba(9, 6, 46, 0.13);
+    
+    /* ESTO ES LO QUE SOLUCIONA EL HUECO: */
+    width: 100%;        /* Ocupa todo el ancho disponible de su columna */
+    max-width: none;    /* ¡IMPORTANTE! Quita cualquier límite de anchura */
+    
+    height: 100%;
+    box-sizing: border-box; 
+}
+
+
+
+/* Títulos */
+.box h3 {
+    margin-top: 0;
+    color: #136899;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee; /* Línea sutil como en tu imagen */
+    padding-bottom: 15px;
+}
+
+/* 6. ESTILOS DEL FORMULARIO (Inputs Largos) */
+.form p {
+    margin-bottom: 20px;
+}
+
+.form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.form input[type="text"] {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #ccc; /* Borde gris suave */
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.form input[type="text"]:focus {
+    border-color: #136899;
+    outline: none;
+}
+
+/* Texto pequeño */
+small {
+    color: #999;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
+/* ========================================= */
+/* ESTILOS PARA EL CUADRO GRIS Y EL GIF      */
+/* ========================================= */
+
+/* El contenedor gris */
+.actions {
+    padding: 15px;
+    background: #eae8ec;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+
+.gif {
+    border-radius: 5px;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* style.css */
+
+/* Texto dentro del cuadro gris */
+.actions p {
+    /* CAMBIO: Reducimos el margen inferior del texto a 5px */
+    margin: 0 0 5px 0; 
+    font-size: 0.9rem;
+    color: #585360;
+}
+
+/* La imagen del GIF */
+.actions img.gif {
+    border-radius: 5px;
+    width: 100%;
+    
+    /* Mantén el ancho que te gustó (ej: 320px) */
+    max-width: 700px;    
+    
+    height: auto;      /* Altura fija para el GIF */
+    display: inline-block;
+    
+    /* CAMBIO: Reducimos el margen superior de la imagen a 0 o 5px */
+    margin-top: 10px;
+}
+
+/* style.css */
+
+/* Agrega o modifica esta clase */
+.preview {
+    width: 100%;
+    overflow-x: hidden; /* Ocultamos el scroll porque ahora la firma se adaptará */
+    display: flex;
+    justify-content: right; /* Centra la firma si la pantalla es grande */
+}
+
+/* Esto asegura que ninguna imagen dentro de la firma sea más ancha que la pantalla */
+.preview img {
+    max-width: 100%;
+    height: autopx;
+}
+
+/* Asegúrate de que las tablas dentro de la preview no excedan su contenedor visualmente si no es necesario */
+.preview table {
+    max-width: none; /* Permitimos que la tabla tenga su ancho fijo real */
+}
+
+/* Centrar contenido de instalación y darle fondo gris */
+/* Contenedor gris del Gif 2 */
+.install .paste {
+    text-align: center;
+    background: #f9f9f9;
+    padding: 10px;       /* REDUCIDO: Antes tenías 20px o 25px. Menos padding = Más espacio para la foto */
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* La imagen del Gif 2 */
+.paste img {
+    width: 100%;         /* OBLIGATORIO: Que intente ocupar todo el ancho posible */
+    max-width: 1200px;   /* AUMENTADO: Un límite grande para que no se frene antes de tiempo */
+    height: auto;        /* Mantiene la proporción */
+    display: block;      /* Evita espacios extraños abajo */
+    margin: 0 auto;      /* Centrado */
+    border-radius: 4px;  /* Opcional: bordes suaves */
+}
+
+
+
+/* 8. RESPONSIVE PARA MÓVILES */
+@media (max-width: 768px) {
+    /* En pantallas de tablet o móvil, quitamos padding lateral */
+    body {
+        padding: 10px;
+    }
+    
+    main {
+        max-width: 100%; /* Aprovecha todo el ancho en móviles */
+    }
+    
+    .box {
+        padding: 20px;
+    }
+}
+
+/* style.css - Al final del archivo */
+
+.btn-copy {
+    background-color: #136899; /* Azul Telrad */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+.btn-copy:hover {
+    background-color: #0d4e73; /* Azul más oscuro al pasar el mouse */
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+}
+
+.btn-copy:active {
+    transform: translateY(0);
+}
