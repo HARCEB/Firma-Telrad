@@ -169,18 +169,19 @@ small {
 
 /* style.css */
 
-/* Agrega o modifica esta clase */
+/* ========================================= */
+/* ESTILOS DE LA VISTA PREVIA (CORREGIDO)    */
+/* ========================================= */
 .preview {
     width: 100%;
-    overflow-x: hidden; /* Ocultamos el scroll porque ahora la firma se adaptará */
-    display: flex;
-    justify-content: right; /* Centra la firma si la pantalla es grande */
+    overflow-x: auto; /* Permite una barra de desplazamiento si la pantalla es chica, sin cortar la firma */
+    display: block; /* Mantiene la tabla en su tamaño original */
+    padding-bottom: 15px; /* Espacio por si sale la barra de scroll */
 }
 
-/* Esto asegura que ninguna imagen dentro de la firma sea más ancha que la pantalla */
 .preview img {
-    max-width: 100%;
-    height: autopx;
+    /* Quitamos el max-width para que los logos de Telrad y los íconos mantengan su tamaño exacto */
+    height: auto; 
 }
 
 /* Asegúrate de que las tablas dentro de la preview no excedan su contenedor visualmente si no es necesario */
