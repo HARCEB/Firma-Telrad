@@ -1,512 +1,249 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
-
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Signature - Telrad</title>
 
-
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-
     <link href="https://fonts.cdnfonts.com/css/century-gothic" rel="stylesheet">
-
     <link rel="stylesheet" href="https://www.encora.com/hubfs/signatures/style.css">
-
-
-
     <link rel="stylesheet" href="style.css">
-
 </head>
 
-
-
 <body>
-
     <div class="">
-
         <header>
-
             <img src="https://harceb.github.io/Firma-Telrad/Img/PRINCIPAL SVG.svg" alt="Telrad" width="300">
-
         </header>
 
-
-
         <main>
-
-           
-
             <div class="form">
-
                 <div class="box">
-
                     <h3>1. Ingresa datos</h3>
 
-
-
                     <p>
-
                         <label for="name">Nombre y apellido</label>
-
                         <input type="text" name="name" placeholder="Ej: Juan Pérez">
-
                     </p>
-
                     <p>
-
                         <label for="role">Puesto</label>
-
                         <input type="text" name="role" placeholder="Ej: Gerente de Proyectos">
-
                     </p>
-
-                   
-
                     <p>
-
                         <label for="phone">Numero de contacto / Corporativo</label>
-
                         <input type="text" name="phone" placeholder="Ej: 999 999 999">
-
                     </p>
-
                     <p>
-
                         <label for="mobile">Dirección Laboral</label>
-
                         <input type="text" name="mobile" placeholder="Ej: Av. Javier Prado 123, Lima">
-
                     </p>
-
-
 
                     <div style="display: none; margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
-
                         <label for="designSelect" style="color:#136899; font-weight:bold; display:block; margin-bottom:8px;">Cambiar estilo de firma:</label>
-
                         <select id="designSelect" onchange="toggleSignature()" style="width:100%; padding: 12px; border-radius: 6px; border: 1px solid #136899; background: #fff; color: #333; font-size: 14px; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif;">
-
                             <option value="signature1">Firma 1 (Diseño 2025)</option>
-
                             <option value="signature2">Firma 2 (Diseño clasico)</option>
-
                         </select>
-
                     </div>
-
                 </div>
-
             </div>
-
-           
-
-
 
             <div class="signature">
-
                 <div class="box">
-
                     <h3 class="p-0">2. Revisar y copiar</h3>
-
-                   
-
-                    <!-- CORRECCIÓN: Estilos de display flex para centrar -->
-
-                    <!-- CÓDIGO CORREGIDO -->
-
-                        <div class="preview" style="display: flex; justify-content: left;">
-
-                       
-
-                        <!-- FIRMA 1: OPTIMIZADA (Ancho 650px + Distribución corregida) -->
-
+                    
+                    <div class="preview" style="display: flex; justify-content: left;">
+                        
                         <div id="signature1" style="display: block;">
-    
-    <table width="600" border="0" cellpadding="0" cellspacing="0" style="width: 600px; background-color: white; border-collapse: collapse; font-family: 'Century Gothic', Helvetica, sans-serif;">
-        <tbody>
-            <tr>
-                <td width="260" valign="middle" style="width: 260px; padding-right: 10px; vertical-align: middle;">
-                    <a href="https://telrad.com/" target="_blank" style="text-decoration: none;">
-                        <img src="https://harceb.github.io/Firma-Telrad/Img2/image002.png" 
-                             alt="Telrad" 
-                             width="250" 
-                             height="85" 
-                             style="display: block; border: 0; width: 250px; height: 85px;">
-                    </a>
-                </td>
-
-                <td width="340" valign="middle" style="width: 340px; vertical-align: middle; border-left: 3px solid #8ec641; padding-left: 15px;">
-                    
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 18px; font-weight: bold; line-height: 22px;">
-                                <span id="name-1" style="white-space: nowrap;">[Nombre y Apellido]</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="font-family: 'Century Gothic', sans-serif; color: #8ec641; font-size: 13px; line-height: 16px;">
-                                <span id="role-1" style="font-weight: bold;">[Cargo]</span>
-                                <span style="font-weight: bold;">| Telrad Perú S.A.</span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div style="font-size: 5px; line-height: 5px; height: 5px;">&nbsp;</div>
-
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td valign="bottom">
-                                
-                                <table border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td width="25" valign="top" style="width: 25px; color: #005c96; font-size: 16px; line-height: 18px;">&#128222;</td>
-                                        <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; line-height: 18px; padding-bottom: 5px;">
-                                            <span id="phone-1" style="color: #005c96; text-decoration: none;">[Número]</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="25" valign="top" style="width: 25px; color: #005c96; font-size: 16px; line-height: 18px;">&#127970;</td>
-                                        <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; line-height: 18px;">
-                                            <span id="mobile-1">[Dirección]</span>
-                                        </td>
-                                    </tr>
-                                </table>
-
-                                <div style="font-size: 5px; line-height: 5px; height: 5px;">&nbsp;</div>
-
-                                <table border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                        <td valign="bottom" style="padding-right: 5px;">
-                                            <a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image005.png" width="24" height="24" style="display: block; border:0;"></a>
-                                        </td>
-                                        <td valign="bottom" style="padding-right: 5px;">
-                                            <a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image007.png" width="24" height="24" style="display: block; border:0;"></a>
-                                        </td>
-                                        <td valign="bottom" style="padding-right: 10px;">
-                                            <a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image008.png" width="24" height="24" style="display: block; border:0;"></a>
-                                        </td>
-                                        <td valign="bottom" style="font-family: Arial, sans-serif; color: #005c96; font-size: 9px; font-weight: bold; line-height: 11px;">
-                                            Visítanos en nuestras<br>redes sociales @telradperu
-                                        </td>
-                                    </tr>
-                                </table>
-
-                            </td>
-
-                            <td width="50" valign="bottom" style="width: 50px; padding-left: 10px;">
-                                <img src="https://harceb.github.io/Firma-Telrad/Img2/image004.png" alt="ISO 9001" width="40" style="display: block; border: 0; width: 40px; height: auto;">
-                            </td>
-                            <td width="90" valign="middle" align="center" style="padding-left: 10px;">
-    <div id="qr-container-1" style="width: 80px; height: 80px; background: white; padding: 5px; border-radius: 5px;"></div>
-</td>
-                        </tr>
-                    </table>
-
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-                                           
-
-                    
-                       
-
-                   
-
-                                           
-
-
-
-                                   
-
-
-
-                    <div id="signature2" style="display: none; width: 90%;">
-
-                            <table width="650" border="0" cellpadding="0" cellspacing="0" style="width: 650px; background-color: white; border-collapse: collapse; font-family: 'Century Gothic', Helvetica, sans-serif;">
-
+                            <table width="720" border="0" cellpadding="0" cellspacing="0" style="width: 720px; background-color: white; border-collapse: collapse; font-family: 'Century Gothic', Helvetica, sans-serif;">
                                 <tbody>
+                                    <tr>
+                                        <td width="260" valign="middle" style="width: 260px; padding-right: 10px; vertical-align: middle;">
+                                            <a href="https://telrad.com/" target="_blank" style="text-decoration: none;">
+                                                <img src="https://harceb.github.io/Firma-Telrad/Img2/image002.png" alt="Telrad" width="250" height="85" style="display: block; border: 0; width: 250px; height: 85px;">
+                                            </a>
+                                        </td>
 
-                                <tr>
-
-                                    <!-- COLUMNA LOGO: 260px -->
-
-                                    <td width="320" align="right" valign="middle" style="width: 320px ;padding-right: 10px;">
-
-                                        <a href="https://telrad.com/" target="_blank">
-
-                                            <!-- Usamos la ruta absoluta para asegurar que se vea en Outlook -->
-
-                                            <img src="https://harceb.github.io/Firma-Telrad/Img/Telrad.png" alt="Telrad" width="280" style="display: block; border: 0; width: 280px; height: 280;">
-
-                                        </a>
-
-                                    </td>
-
-                                       
-
-                                    <!-- COLUMNA TEXTO: 420px + Borde Verde Izquierdo -->
-
-                                     
-
-                                        <!-- SECCIÓN NOMBRE -->
-
-                                         <td width="330" valign="middle" style="width: 360px; border-left: 3px solid #8ec641; padding-left: 10px; padding-right: 15px;">
-
-
-
-                                             <table width="330" border="0" cellspacing="0" cellpadding="0";>
-
-                                           
-
-                                            <tr>
-
-                                                <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 18px; font-weight: bold; ">
-
-                                                    <!-- white-space: nowrap evita que el nombre se rompa -->
-
-                                                    <span id="name-2" style="white-space: nowrap;">[Nombre y Apellido]</span>
-
-                                                </td>
-
-                                            </tr>
-
-                                            <tr>
-
-                                                <td style="font-family: 'Century Gothic', sans-serif; color: #8ec641; font-size: 13px; padding-bottom: 5px;">
-
-                                                    <span id="role-2" style="font-weight: bold;">[Cargo]</span>
-
-                                                    <span style="font-weight: bold;">| Telrad Perú S.A.</span>
-
-                                                </td>
-
-                                            </tr>
-
-                                           
-
+                                        <td width="460" valign="middle" style="width: 460px; vertical-align: middle; border-left: 3px solid #8ec641; padding-left: 15px;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 18px; font-weight: bold; line-height: 22px;">
+                                                        <span id="name-1" style="white-space: nowrap;">[Nombre y Apellido]</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-family: 'Century Gothic', sans-serif; color: #8ec641; font-size: 13px; line-height: 16px;">
+                                                        <span id="role-1" style="font-weight: bold;">[Cargo]</span>
+                                                        <span style="font-weight: bold;">| Telrad Perú S.A.</span>
+                                                    </td>
+                                                </tr>
                                             </table>
 
-                                         
+                                            <div style="font-size: 5px; line-height: 5px; height: 5px;">&nbsp;</div>
 
-
-
-                                           
-
-                                        <!-- SECCIÓN DATOS -->
-
-                                        <table width="85%" border="0" cellspacing="0" cellpadding="0">
-
-                                           
-
-                                            <tr>
-
-                                                <td valign="center" style="padding-bottom: 0px;">
-
-                                                    <table width="100%" border="0" Cellspacing="0" Cellpadding="0">
-
-                                                        <tbody>
-
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td valign="bottom">
+                                                        <table border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
-
-                                                     <td width="29" valign="center" style="color: #005c96; font-size: 16px;">&#128222;</td>
-
-                                                        <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; padding-bottom: 0px;">
-
-                                                      <span id="phone-2">[Número]</span>
-
-                                                        </td>
-
-                                                        </tr>
-
-                                       
-
-                                                        <tr>
-
-                                                        <td width="29" valign="center" style="color: #005c96; font-size: 16px;">&#127970;</td>
-
-                                                        <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; padding-bottom: 10px;">
-
-                                                        <span id="mobile-2">[Dirección]</span>
-
-                                                        </td>
-
-                                                        </tr>
-
-                                                       
-
-                                                        </tbody>
-
-                                                    </table>
-
-                                               
-
-                                                   
-
-                                       
-
-                       
-                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                            <tr>
-                                                <td height="12" style="font-size: 1px; line-height: 1px;">&nbsp;</td>
-                                            </tr>
-                                        </table>
-
-                                                       
-
-                                        <!-- SECCIÓN REDES e ISO -->
-
-                                         
-
-                                               
-
-                                                 
-
-                                                    <table border="1" Cellspacing="0" Cellpadding="0" style="padding-top: 10px;">
-
-                                                  <tr>
-
-                                               
-
-                                                            <td style="padding-right: 5px;"><a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image005.png" width="24" style="display: block; border:0;"></a></td>
-
-                                                            <td style="padding-right: 5px;"><a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image007.png" width="24" style="display: block; border:0;"></a></td>
-
-                                                            <td style="padding-right: 10px;"><a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image008.png" width="24" style="display: block; border:0;"></a></td>
-
-                                                            <td style="font-family: Arial, sans-serif; color: #005c96; font-size: 9px; font-weight: bold; line-height: 11px;" width="125">
-
-                                                                Visítanos en nuestras<br>redes sociales @telradperu
-
-                                                            </td>
-
-
-
-                                                       
-
-                                                        </tr>
-
+                                                                <td width="25" valign="top" style="width: 25px; color: #005c96; font-size: 16px; line-height: 18px;">&#128222;</td>
+                                                                <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; line-height: 18px; padding-bottom: 5px;">
+                                                                    <span id="phone-1" style="color: #005c96; text-decoration: none;">[Número]</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="25" valign="top" style="width: 25px; color: #005c96; font-size: 16px; line-height: 18px;">&#127970;</td>
+                                                                <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; line-height: 18px;">
+                                                                    <span id="mobile-1">[Dirección]</span>
+                                                                </td>
+                                                            </tr>
                                                         </table>
 
-                                                </td>
+                                                        <div style="font-size: 5px; line-height: 5px; height: 5px;">&nbsp;</div>
 
-                                                <td width="40" valign="bottom" align="right" style="padding-left: 10px;">
-                                                            <img src="https://harceb.github.io/Firma-Telrad/Img2/image004.png" 
-                                                        alt="ISO 9001" 
-                                                        width="40" 
-                                                        style="display: block; border: 0; width: 40px; height: auto;">
-                                                </td>
-
-                                            </tr>
-
-                                                </table>
-
-
-
-                                         </td>
-
-                                            </tr>
-
-                                               
-
-
-
-                                            </tbody>
-
+                                                        <table border="0" cellspacing="0" cellpadding="0">
+                                                            <tr>
+                                                                <td valign="bottom" style="padding-right: 5px;">
+                                                                    <a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image005.png" width="24" height="24" style="display: block; border:0;"></a>
+                                                                </td>
+                                                                <td valign="bottom" style="padding-right: 5px;">
+                                                                    <a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image007.png" width="24" height="24" style="display: block; border:0;"></a>
+                                                                </td>
+                                                                <td valign="bottom" style="padding-right: 10px;">
+                                                                    <a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image008.png" width="24" height="24" style="display: block; border:0;"></a>
+                                                                </td>
+                                                                <td valign="bottom" style="font-family: Arial, sans-serif; color: #005c96; font-size: 9px; font-weight: bold; line-height: 11px;">
+                                                                    Visítanos en nuestras<br>redes sociales @telradperu
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="50" valign="bottom" style="width: 50px; padding-left: 10px;">
+                                                        <img src="https://harceb.github.io/Firma-Telrad/Img2/image004.png" alt="ISO 9001" width="40" style="display: block; border: 0; width: 40px; height: auto;">
+                                                    </td>
+                                                    <td width="90" valign="middle" align="center" style="padding-left: 10px;">
+                                                        <div id="qr-container-1" style="width: 80px; height: 80px; background: white; padding: 5px; border-radius: 5px;"></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
-
-                               
-
                         </div>
 
+                        <div id="signature2" style="display: none; width: 90%;">
+                            <table width="720" border="0" cellpadding="0" cellspacing="0" style="width: 720px; background-color: white; border-collapse: collapse; font-family: 'Century Gothic', Helvetica, sans-serif;">
+                                <tbody>
+                                    <tr>
+                                        <td width="320" align="right" valign="middle" style="width: 320px ;padding-right: 10px;">
+                                            <a href="https://telrad.com/" target="_blank">
+                                                <img src="https://harceb.github.io/Firma-Telrad/Img/Telrad.png" alt="Telrad" width="280" style="display: block; border: 0; width: 280px; height: 280;">
+                                            </a>
+                                        </td>
+                                        
+                                        <td width="400" valign="middle" style="width: 400px; border-left: 3px solid #8ec641; padding-left: 10px; padding-right: 15px;">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 18px; font-weight: bold; ">
+                                                        <span id="name-2" style="white-space: nowrap;">[Nombre y Apellido]</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="font-family: 'Century Gothic', sans-serif; color: #8ec641; font-size: 13px; padding-bottom: 5px;">
+                                                        <span id="role-2" style="font-weight: bold;">[Cargo]</span>
+                                                        <span style="font-weight: bold;">| Telrad Perú S.A.</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                <tr>
+                                                    <td valign="center" style="padding-bottom: 0px;">
+                                                        <table width="100%" border="0" Cellspacing="0" Cellpadding="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="29" valign="center" style="color: #005c96; font-size: 16px;">&#128222;</td>
+                                                                    <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; padding-bottom: 0px;">
+                                                                        <span id="phone-2">[Número]</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="29" valign="center" style="color: #005c96; font-size: 16px;">&#127970;</td>
+                                                                    <td style="font-family: 'Century Gothic', sans-serif; color: #005c96; font-size: 12px; padding-bottom: 10px;">
+                                                                        <span id="mobile-2">[Dirección]</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                        <table border="0" Cellspacing="0" Cellpadding="0" style="padding-top: 10px;">
+                                                            <tr>
+                                                                <td style="padding-right: 5px;"><a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image005.png" width="24" style="display: block; border:0;"></a></td>
+                                                                <td style="padding-right: 5px;"><a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image007.png" width="24" style="display: block; border:0;"></a></td>
+                                                                <td style="padding-right: 10px;"><a href="#"><img src="https://harceb.github.io/Firma-Telrad/Img2/image008.png" width="24" style="display: block; border:0;"></a></td>
+                                                                <td style="font-family: Arial, sans-serif; color: #005c96; font-size: 9px; font-weight: bold; line-height: 11px;" width="125">
+                                                                    Visítanos en nuestras<br>redes sociales @telradperu
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                    <td width="40" valign="bottom" align="right" style="padding-left: 10px;">
+                                                        <img src="https://harceb.github.io/Firma-Telrad/Img2/image004.png" alt="ISO 9001" width="40" style="display: block; border: 0; width: 40px; height: auto;">
+                                                    </td>
+                                                    <td width="90" valign="middle" align="center" style="padding-left: 10px;">
+                                                        <div id="qr-container-2" style="width: 80px; height: 80px; background: white; padding: 5px; border-radius: 5px;"></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>            
 
-
-
-<div class="actions">
-    <p>Descarga tu firma como imagen lista para usar:</p>
-    <button id="downloadBtn" class="btn-copy" onclick="descargarFirma()">Descargar Firma (JPG)</button>
-</div>
-    
-    <button id="copyBtn" class="btn-copy">Copiar tu firma</button>
-    <p id="copyMessage" style="color: #8ec641; font-weight: bold; display: none; margin-top: 10px;">¡Firma copiada exitosamente!</p>
-    <p><img src="https://harceb.github.io/Firma-Telrad/Img/Gif1.gif" alt="Select and Copy" class="gif"></p>
-    <p><small>(O puedes hacerlo manualmente como en la imagen)</small></p>
-</div>
+                    <div class="actions">
+                        <p>Descarga tu firma como imagen lista para usar:</p>
+                        <button id="downloadBtn" class="btn-copy">Descargar Firma (JPG)</button>
+                        
+                        
+                        <p><img src="https://harceb.github.io/Firma-Telrad/Img/Gif1.gif" alt="Select and Copy" class="gif"></p>
+                        <p><small>(O puedes hacerlo manualmente como en la imagen)</small></p>
+                    </div>
 
                 </div>
-
             </div>
-
-
 
             <div class="install">
-
                 <div class="box">
-
                     <h3>3. Paste in Outlook</h3>
-
                     <div>
-
                         <p>Ve a Outlook en escritorio u <a href="https://outlook.com" target="_blank">outlook.com</a></p>
-
                         <ol>
-
                             <li>Abrimos un nuevo mensaje de correo</li>
-
                             <li>En la parte superior seleccionamos "Firma" y agregamos uno nuevo</li>
-
                             <li>Colocamos un nombre a la firma y pegamos nuestra nueva firma digital</li>
-
                             <li>Guardar cambios.</li>
-
                         </ol>
-
                         <p>¡Listo!</p>
-
                     </div>
-
                     <div class="paste">
-
                         <img src="https://harceb.github.io/Firma-Telrad/Img/Gif2.gif" alt="Paste">
-
                     </div>
-
                 </div>
-
             </div>
 
-
-
         </main>
-
     </div>
 
-
-
-    <script src="script.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
-
-
-
-
-
