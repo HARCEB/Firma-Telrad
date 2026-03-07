@@ -33,19 +33,27 @@
 
         var vCardData = generarVCard(currentName, currentRole, currentPhone);
         
+        // 📍 EL TRUCO AQUÍ: Convertimos el texto para que la librería no se bloquee con las tildes
+        var safeVCardData = unescape(encodeURIComponent(vCardData));
+        
         var activeId = designSelector && designSelector.value === "signature2" ? "2" : "1";
         var qrContainer = document.getElementById("qr-container-" + activeId);
 
         if (qrContainer) {
             qrContainer.innerHTML = ""; // Limpiar anterior
-            new QRCode(qrContainer, {
-                text: vCardData,
-                width: 80,
-                height: 80,
-                colorDark : "#005c96",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.L
-            });
+            
+            try {
+                new QRCode(qrContainer, {
+                    text: safeVCardData, // Usamos el texto convertido
+                    width: 80,
+                    height: 80,
+                    colorDark : "#005c96",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.L
+                });
+            } catch (error) {
+                console.error("Error dibujando el QR:", error);
+            }
         }
     }
 
