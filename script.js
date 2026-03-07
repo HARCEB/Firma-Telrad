@@ -20,21 +20,23 @@
     var copyMessage = document.getElementById("copyMessage");
     var designSelector = document.getElementById("designSelect");
 
-    // 2. FUNCIÓN PARA CREAR EL TEXTO DEL CONTACTO (vCard)
-    function generarVCard(nombre, cargo, telefono) {
-        return `BEGIN:VCARD\nVERSION:3.0\nFN:${nombre}\nORG:Telrad Perú S.A.\nTITLE:${cargo}\nTEL;WORK;VOICE:${telefono}\nEND:VCARD`;
+    // 2. FUNCIÓN PARA LIMPIAR TILDES (NUEVO)
+    function quitarTildes(texto) {
+        return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
-    // 3. FUNCIÓN PARA DIBUJAR EL QR
+    // 3. FUNCIÓN PARA DIBUJAR EL QR (CORREGIDA)
     function actualizarQR() {
         var currentName = fields.name.value || 'Empleado Telrad';
         var currentRole = fields.role.value || 'Cargo';
         var currentPhone = fields.phone.value || '000000000';
 
-        var vCardData = generarVCard(currentName, currentRole, currentPhone);
+        // Limpiamos los textos de tildes o caracteres raros para evitar el 'overflow'
+        var cleanName = quitarTildes(currentName);
+        var cleanRole = quitarTildes(currentRole);
         
-        // 📍 EL TRUCO AQUÍ: Convertimos el texto para que la librería no se bloquee con las tildes
-        var safeVCardData = unescape(encodeURIComponent(vCardData));
+        // Generamos la vCard con los textos limpios (Nota: Puse Telrad Peru sin tilde)
+        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEND:VCARD`;
         
         var activeId = designSelector && designSelector.value === "signature2" ? "2" : "1";
         var qrContainer = document.getElementById("qr-container-" + activeId);
@@ -43,8 +45,9 @@
             qrContainer.innerHTML = ""; // Limpiar anterior
             
             try {
+                // Dibujamos el QR con la información limpia
                 new QRCode(qrContainer, {
-                    text: safeVCardData, // Usamos el texto convertido
+                    text: vCardData, 
                     width: 80,
                     height: 80,
                     colorDark : "#005c96",
