@@ -36,7 +36,7 @@
         var cleanRole = quitarTildes(currentRole);
         
         // Generamos la vCard con los textos limpios (Nota: Puse Telrad Peru sin tilde)
-        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEND:VCARD`;
+        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEND:VCARD`;
         
         var activeId = designSelector && designSelector.value === "signature2" ? "2" : "1";
         var qrContainer = document.getElementById("qr-container-" + activeId);
