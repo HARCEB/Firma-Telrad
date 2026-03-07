@@ -145,4 +145,21 @@
     // Pequeño retraso al inicio para asegurar que la librería QR ya cargó
     setTimeout(update, 500);
 
+    // 8. FUNCIÓN PARA CAMBIAR DE DISEÑO (Se te había borrado)
+    window.toggleSignature = function() {
+        var selectedValue = designSelector.value;
+        var sig1 = document.getElementById("signature1");
+        var sig2 = document.getElementById("signature2");
+
+        if (selectedValue === "signature1") {
+            if(sig1) sig1.style.display = "block";
+            if(sig2) sig2.style.display = "none";
+        } else {
+            if(sig1) sig1.style.display = "none";
+            if(sig2) sig2.style.display = "block";
+        }
+        // Actualizamos el QR si cambiamos de vista
+        actualizarQR();
+    };
+
 })();
