@@ -5,7 +5,8 @@
         name: document.querySelector("input[name=name]"),
         role: document.querySelector("input[name=role]"),
         mobile: document.querySelector("input[name=mobile]"),
-        phone: document.querySelector("input[name=phone]")
+        phone: document.querySelector("input[name=phone]"),
+        email: document.querySelector("input[name=email]") // Nuevo campo de correo
     };
 
     var cells = {
@@ -16,40 +17,44 @@
     };
 
     var downloadBtn = document.getElementById("downloadBtn"); 
-    var copyBtn = document.getElementById("copyBtn");
-    var copyMessage = document.getElementById("copyMessage");
     var designSelector = document.getElementById("designSelect");
 
-    // 2. FUNCIÓN PARA LIMPIAR TILDES (NUEVO)
+    // 2. FUNCIÓN PARA LIMPIAR TILDES
     function quitarTildes(texto) {
+        if (!texto) return "";
         return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
-    // 3. FUNCIÓN PARA DIBUJAR EL QR (CORREGIDA)
+    // 3. FUNCIÓN PARA DIBUJAR EL QR (CON CORREO Y +51 OBLIGATORIO)
     function actualizarQR() {
-        var currentName = fields.name.value || 'Empleado Telrad';
-        var currentRole = fields.role.value || 'Cargo';
-        var currentPhone = fields.phone.value || '000000000';
+        var currentName = fields.name.value || 'Jhared Chávez';
+        var currentRole = fields.role.value || 'Comunicador Organizacional';
+        var currentEmail = fields.email.value || 'correo@telrad.com.pe';
+        var currentAddress = fields.mobile.value || 'Calle antequera, 777, San Isidro, Lima';
+        
+        // Forzamos el +51 en el teléfono
+        var rawPhone = fields.phone.value || '000000000';
+        var currentPhone = rawPhone.includes('+51') ? rawPhone : '+51 ' + rawPhone.trim();
 
-        // Limpiamos los textos de tildes o caracteres raros para evitar el 'overflow'
+        // Limpiamos textos para el QR
         var cleanName = quitarTildes(currentName);
         var cleanRole = quitarTildes(currentRole);
-        
-        // Generamos la vCard con los textos limpios (Nota: Puse Telrad Peru sin tilde)
-        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEND:VCARD`;
+        var cleanAddress = quitarTildes(currentAddress);
+        var cleanEmail = quitarTildes(currentEmail);
+
+        // Armamos la tarjeta vCard incluyendo el correo (EMAIL)
+        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEMAIL;WORK;INTERNET:${cleanEmail}\nADR;WORK:;;${cleanAddress}\nEND:VCARD`;
         
         var activeId = designSelector && designSelector.value === "signature2" ? "2" : "1";
         var qrContainer = document.getElementById("qr-container-" + activeId);
 
         if (qrContainer) {
-            qrContainer.innerHTML = ""; // Limpiar anterior
-            
+            qrContainer.innerHTML = ""; 
             try {
-                // Dibujamos el QR con la información limpia
                 new QRCode(qrContainer, {
                     text: vCardData, 
-                    width: 80,
-                    height: 80,
+                    width: 70,
+                    height: 70,
                     colorDark : "#005c96",
                     colorLight : "#ffffff",
                     correctLevel : QRCode.CorrectLevel.L
@@ -60,24 +65,27 @@
         }
     }
 
-    // 4. ACTUALIZAR TEXTOS MIENTRAS ESCRIBES
+    // 4. ACTUALIZAR TEXTOS VISIBLES MIENTRAS ESCRIBES
     function update() {
-        var defaultName = "[Nombre y Apellido]";
-        var defaultRole = "[Cargo]";
-        var defaultPhone = "[Número]";
-        var defaultMobile = "[Dirección]";
+        var defaultName = "Jhared Chávez";
+        var defaultRole = "Comunicador Organizacional";
+        var defaultMobile = "Calle antequera, 777, San Isidro, Lima";
+
+        // Formateamos visualmente el +51
+        var rawPhone = fields.phone.value;
+        var displayPhone = rawPhone ? (rawPhone.includes('+51') ? rawPhone : '+51 ' + rawPhone.trim()) : '+51 922 669 343';
 
         if (cells.name1) cells.name1.innerHTML = fields.name.value || defaultName;
         if (cells.role1) cells.role1.innerHTML = fields.role.value || defaultRole;
-        if (cells.phone1) cells.phone1.innerHTML = fields.phone.value || defaultPhone;
+        if (cells.phone1) cells.phone1.innerHTML = displayPhone;
         if (cells.mobile1) cells.mobile1.innerHTML = fields.mobile.value || defaultMobile;
 
         if (cells.name2) cells.name2.innerHTML = fields.name.value || defaultName;
         if (cells.role2) cells.role2.innerHTML = fields.role.value || defaultRole;
-        if (cells.phone2) cells.phone2.innerHTML = fields.phone.value || defaultPhone;
+        if (cells.phone2) cells.phone2.innerHTML = displayPhone;
         if (cells.mobile2) cells.mobile2.innerHTML = fields.mobile.value || defaultMobile;
 
-        actualizarQR(); // Llama al QR para que se actualice también
+        actualizarQR(); 
     }
 
     // 5. BOTÓN PARA DESCARGAR IMAGEN
@@ -95,11 +103,11 @@
             setTimeout(function() {
                 html2canvas(activeSignature, {
                     backgroundColor: "#ffffff",
-                    scale: 2 // Alta calidad
+                    scale: 2 
                 }).then(canvas => {
                     var enlace = document.createElement('a');
-                    var fileNameName = fields.name.value ? fields.name.value.replace(/\s+/g, '_') : 'Firma';
-                    enlace.download = fileNameName + '_Telrad.jpg';
+                    var fileNameName = fields.name.value ? fields.name.value.replace(/\s+/g, '_') : 'Firma_Telrad';
+                    enlace.download = fileNameName + '.jpg';
                     enlace.href = canvas.toDataURL('image/jpeg', 0.9);
                     enlace.click();
 
@@ -114,49 +122,7 @@
         });
     }
 
-    // 6. BOTÓN PARA COPIAR TEXTO (Mantenemos tu función original por si acaso)
-    if (copyBtn) {
-        copyBtn.addEventListener("click", function() {
-            var activeId = designSelector && designSelector.value === "signature1" ? "signature1" : "signature2";
-            var activeSignature = document.getElementById(activeId);
-            if (!activeSignature) return;
-
-            var range = document.createRange();
-            range.selectNode(activeSignature);
-            var selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range); 
-
-            try {
-                document.execCommand('copy');
-                if(copyMessage) copyMessage.style.display = "block";
-                copyBtn.innerText = "¡Copiado!";
-                copyBtn.style.backgroundColor = "#8ec641"; 
-                
-                setTimeout(function() {
-                    if(copyMessage) copyMessage.style.display = "none";
-                    copyBtn.innerText = "Copiar tu firma";
-                    copyBtn.style.backgroundColor = "#136899"; 
-                }, 3000);
-            } catch (err) {
-                alert("Presiona Ctrl+C para copiar.");
-            }
-            selection.removeAllRanges();
-        });
-    }
-
-    // 7. INICIAR TODO
-    Object.values(fields).forEach(function(field) {
-        if(field) {
-            field.addEventListener("keyup", update);
-            field.addEventListener("change", update);
-        }
-    });
-
-    // Pequeño retraso al inicio para asegurar que la librería QR ya cargó
-    setTimeout(update, 500);
-
-    // 8. FUNCIÓN PARA CAMBIAR DE DISEÑO (Se te había borrado)
+    // 6. CAMBIO DE DISEÑO
     window.toggleSignature = function() {
         var selectedValue = designSelector.value;
         var sig1 = document.getElementById("signature1");
@@ -169,8 +135,17 @@
             if(sig1) sig1.style.display = "none";
             if(sig2) sig2.style.display = "block";
         }
-        // Actualizamos el QR si cambiamos de vista
         actualizarQR();
     };
+
+    // 7. INICIAR TODO
+    Object.values(fields).forEach(function(field) {
+        if(field) {
+            field.addEventListener("keyup", update);
+            field.addEventListener("change", update);
+        }
+    });
+
+    setTimeout(update, 500);
 
 })();
