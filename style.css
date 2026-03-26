@@ -16,36 +16,36 @@ header {
 }
 
 /* 2. LAYOUT PRINCIPAL (ELÁSTICO) */
-/* En style.css */
-
 main {
     display: flex;
     flex-wrap: wrap;
-    
-    /* Este es el ÚNICO espacio que debe haber entre las cajas (20px) */
-    gap: 10px;              
-    
+    gap: 20px; /* Aumentamos un poquito el espacio entre cajas para que respiren */
     width: 100%;
-    max-width: 1500px;      
+    max-width: 1700px; /* AUMENTADO: Permitimos que se estire más en pantallas grandes */
     margin: 0 auto;
-    
-    /* Esto junta las cajas al centro si sobra espacio */
     justify-content: center; 
 }
 
-/* 3. LAS CAJAS DE ARRIBA (1 y 2) */
-.form, 
-.signature {
-    /* 📍 CAMBIO CLAVE 2: Flexibilidad agresiva */
-    /* Grow: 1 (Crece todo lo que pueda)
-       Shrink: 1 (Se encoge si falta espacio)
-       Basis: 450px (Intenta medir al menos 450px de ancho) */
-    flex: 1 1 0;         
+/* ========================================= */
+/* 3. LAS CAJAS DE ARRIBA (SEPARADAS)        */
+/* ========================================= */
+
+/* CAJA 1: FORMULARIO */
+.form {
+    /* Le damos el 40% de la pantalla (restamos 10px por el hueco del medio) */
+    flex: 0 0 calc(40% - 10px); 
     
-    /* Esto asegura que si haces mucho zoom, bajen una debajo de otra */
-    min-width: 720px;        
+    /* Le ponemos un límite mínimo más pequeño para que no quite espacio */
+    min-width: 350px; 
+}
 
-
+/* CAJA 2: FIRMA Y DESCARGA */
+.signature {
+    /* Le damos el 60% de la pantalla para que tenga espacio de sobra */
+    flex: 0 0 calc(60% - 10px); 
+    
+    /* Mantenemos su escudo protector para que la tabla nunca se rompa */
+    min-width: 760px; 
 }
 
 /* 4. LA CAJA DE ABAJO (3) */
