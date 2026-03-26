@@ -43,7 +43,8 @@
         var cleanEmail = quitarTildes(currentEmail);
 
         // Armamos la tarjeta vCard incluyendo el correo (EMAIL)
-        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEMAIL;WORK;INTERNET:${cleanEmail}\nADR;WORK:;;${cleanAddress}\nEND:VCARD`;
+        
+        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEND:VCARD`;
         
         var activeId = designSelector && designSelector.value === "signature2" ? "2" : "1";
         var qrContainer = document.getElementById("qr-container-" + activeId);
