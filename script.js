@@ -25,26 +25,22 @@
         return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
-    // 3. FUNCIÓN PARA DIBUJAR EL QR (CON CORREO Y +51 OBLIGATORIO)
+    // 3. FUNCIÓN PARA DIBUJAR EL QR EN ALTA DEFINICIÓN
     function actualizarQR() {
-        var currentName = fields.name.value || 'Jhared Chávez';
-        var currentRole = fields.role.value || 'Comunicador Organizacional';
-        var currentEmail = fields.email.value || 'correo@telrad.com.pe';
-        var currentAddress = fields.mobile.value || 'Calle antequera, 777, San Isidro, Lima';
+        var currentName = fields.name.value || 'Empleado Telrad';
+        var currentRole = fields.role.value || 'Telrad Peru S.A.';
+        var currentEmail = fields.email.value || 'contacto@telrad.com.pe';
+        var currentAddress = fields.mobile.value || 'Lima, Peru';
         
-        // Forzamos el +51 en el teléfono
         var rawPhone = fields.phone.value || '000000000';
         var currentPhone = rawPhone.includes('+51') ? rawPhone : '+51 ' + rawPhone.trim();
 
-        // Limpiamos textos para el QR
         var cleanName = quitarTildes(currentName);
         var cleanRole = quitarTildes(currentRole);
         var cleanAddress = quitarTildes(currentAddress);
         var cleanEmail = quitarTildes(currentEmail);
 
-        // Armamos la tarjeta vCard incluyendo el correo (EMAIL)
-        
-        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEND:VCARD`;
+        var vCardData = `BEGIN:VCARD\nVERSION:3.0\nN:;${cleanName};;;\nFN:${cleanName}\nORG:Telrad Peru S.A.\nTITLE:${cleanRole}\nTEL;WORK;VOICE:${currentPhone}\nEMAIL;WORK;INTERNET:${cleanEmail}\nADR;WORK:;;${cleanAddress}\nEND:VCARD`;
         
         var activeId = designSelector && designSelector.value === "signature2" ? "2" : "1";
         var qrContainer = document.getElementById("qr-container-" + activeId);
@@ -54,12 +50,27 @@
             try {
                 new QRCode(qrContainer, {
                     text: vCardData, 
-                    width: 70,
-                    height: 70,
+                    width: 250,   // GENERADO EN ALTA CALIDAD
+                    height: 250,  // GENERADO EN ALTA CALIDAD
                     colorDark : "#005c96",
                     colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.L
+                    correctLevel : QRCode.CorrectLevel.M // Nivel medio para soportar más data
                 });
+
+                // Truco CSS: Encogemos la imagen HD para que quepa en tu caja de 70x70
+                setTimeout(function() {
+                    var canvas = qrContainer.querySelector("canvas");
+                    var img = qrContainer.querySelector("img");
+                    if (canvas) {
+                        canvas.style.width = "100%";
+                        canvas.style.height = "100%";
+                    }
+                    if (img) {
+                        img.style.width = "100%";
+                        img.style.height = "100%";
+                    }
+                }, 50);
+
             } catch (error) {
                 console.error("Error dibujando el QR:", error);
             }
@@ -68,13 +79,14 @@
 
     // 4. ACTUALIZAR TEXTOS VISIBLES MIENTRAS ESCRIBES
     function update() {
-        var defaultName = "Jhared Chávez";
-        var defaultRole = "Comunicador Organizacional";
-        var defaultMobile = "Calle antequera, 777, San Isidro, Lima";
+        // Restauramos los textos con corchetes
+        var defaultName = "[Nombre y Apellido]";
+        var defaultRole = "[Cargo]";
+        var defaultMobile = "[Dirección]";
+        var defaultPhone = "[Número]";
 
-        // Formateamos visualmente el +51
         var rawPhone = fields.phone.value;
-        var displayPhone = rawPhone ? (rawPhone.includes('+51') ? rawPhone : '+51 ' + rawPhone.trim()) : '+51 922 669 343';
+        var displayPhone = rawPhone ? (rawPhone.includes('+51') ? rawPhone : '+51 ' + rawPhone.trim()) : defaultPhone;
 
         if (cells.name1) cells.name1.innerHTML = fields.name.value || defaultName;
         if (cells.role1) cells.role1.innerHTML = fields.role.value || defaultRole;
